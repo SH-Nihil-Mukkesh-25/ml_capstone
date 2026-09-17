@@ -24,7 +24,14 @@ Comprehensive machine learning capstone project implementing both **Regression**
 
 ### Track 2: Bank Marketing Term Deposit Prediction (Classification — Part A)
 - **Source:** UCI Bank Marketing Dataset (`bank-full.csv`, delimited by `;`)
-- **Objective:** Predict whether a client will subscribe to a term deposit (`yes` / `no`).
+- **Problem Statement (What is happening?):**
+  - A Portuguese retail banking institution executes direct telemarketing phone campaigns to sell long-term deposits.
+  - Mass cold-calling without targeting leads to high operational overhead, customer fatigue, and low conversion rates (only ~11.7% of contacted clients subscribe).
+  - The business objective is to identify patterns across customer demographics, personal financial status, and prior campaign contacts to predict which prospective clients are most likely to subscribe before initiating contact.
+- **Why Classification to solve this?**
+  - **Discrete Binary Outcome:** The target attribute `y` is categorical with two discrete states (`yes` / `no`), not a continuous numerical scale (which would require regression).
+  - **Decision Boundaries & Class Probabilities:** Supervised classification algorithms learn decision boundaries to estimate the posterior probability $P(y=1 \mid X)$ of a customer subscribing given their profile.
+  - **Actionable Campaign Triage:** Classification provides threshold-based lead scoring, allowing the bank to optimize the trade-off between precision (minimizing wasted calls to disinterested clients) and recall (capturing potential subscribers) using classification-specific metrics (Weighted F1, Precision, Recall, and Confusion Matrices).
 - **Features:** Demographics (`age`, `job`, `marital`, `education`), financial history (`default`, `balance`, `housing`, `loan`), and campaign metadata (`contact`, `day`, `month`, `campaign`, `pdays`, `previous`, `poutcome`).
 - **Target:** `y` (mapped to binary: `yes` $\rightarrow$ 1, `no` $\rightarrow$ 0; class ratio approx. 88.3% no vs. 11.7% yes).
 - **Critical Feature Exclusion:** `duration` is **dropped** from the predictor set because call duration is unknown prior to call completion, constituting a realistic predictive-availability / data-leakage concern.
